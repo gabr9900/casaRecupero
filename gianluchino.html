@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gianluchino</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Stile Navbar */
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #343a40;
+            padding-top: 20px;
+            overflow-x: hidden;
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+        }
+
+        .sidebar a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        /* Stile principale (per compensare la navbar laterale) */
+        .main-content {
+            margin-left: 250px;
+            /* Larghezza della navbar */
+            padding: 20px;
+        }
+
+        h1,
+        h2 {
+            color: #007bff;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+        }
+
+        video {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar laterale -->
+    <div class="sidebar">
+        <a href="index.html">🏠 Home</a>
+        <a href="gianluchino.html">😡 Gianluchino</a>
+        <a href="flavietto.html">💼 Flavietto</a>
+        <a href="gabriele.html">🎸 Gabriele</a>
+        <a href="prince_mouad.html">✨ Prince Mouad</a>
+        <a href="diego.html">👨‍🍳 Diego</a>
+    </div>
+
+    <!-- Contenuto principale -->
+    <div class="main-content">
+        <header>
+            <h1>Gianluchino</h1>
+        </header>
+        <section>
+            <img src="media/img/giangio.png" alt="Gianluchino - L'amante dei soffritti" height="300" width="300">
+            <h2>Chi è Gianluchino?</h2>
+            <p>
+                Gianluchino è il coinquilino che tutti amano e temono. La sua passione per i soffritti è leggenda, ma la
+                sua personalità
+                esplosiva può creare situazioni imprevedibili. Con lui, ogni giorno è una nuova avventura culinaria e
+                non solo!
+            </p>
+
+            <h2>Caratteristiche principali</h2>
+            <ul>
+                <li>🍳 Maestro dei soffritti (ma non sempre piacciono a tutti).</li>
+                <li>🔥 Può accendersi facilmente... soprattutto quando si parla di pomodori.</li>
+                <li>🍝 Conosce ogni ricetta della tradizione italiana, ma ama sperimentare.</li>
+            </ul>
+
+            <h2>Il video di Gianluchino</h2>
+            <video autoplay loop muted>
+                <source src="media/vid/giangio.mp4" type="video/mp4">
+                Il tuo browser non supporta il tag video.
+            </video>
+        </section>
+    </div>
+</body>
+
+</html>

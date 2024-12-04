@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diego and His Roommates</title>
+    <style>
+        /* Navbar Styles */
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #343a40;
+            padding-top: 20px;
+            overflow-x: hidden;
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+        }
+
+        .sidebar a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        /* Main Style */
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #343a40;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        h1,
+        h2 {
+            color: #007bff;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Language Selector Styles */
+        .language-selector {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .language-selector select {
+            padding: 5px;
+            font-size: 1rem;
+            background-color: #f8f9fa;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+        }
+
+        /* Mobile Styles */
+        @media screen and (max-width: 768px) {
+            .sidebar {
+                width: 0;
+                transition: 0.3s;
+            }
+
+            .sidebar a {
+                display: none;
+            }
+
+            .sidebar.active {
+                width: 250px;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            /* Sidebar toggle button */
+            .sidebar-toggle {
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                z-index: 1000;
+                font-size: 2rem;
+                color: #343a40;
+                cursor: pointer;
+            }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <!-- Language Selector -->
+    <div class="language-selector">
+        <label for="language">Language: </label>
+        <select id="language" onchange="changeLanguage();">
+            <option value="index.html">Italiano</option>
+            <option value="index-en.html">English</option>
+            <option value="index-ar.html">العربية</option>
+        </select>
+    </div>
+
+    <!-- Sidebar Toggle Button -->
+    <div class="sidebar-toggle">☰</div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="index.html">🏠 Home</a>
+        <a href="gianluchino.html">😡 Gianluchino</a>
+        <a href="flavietto.html">💼 Flavietto</a>
+        <a href="gabriele.html">🎸 Gabriele</a>
+        <a href="prince_mouad.html">✨ Prince Mouad</a>
+        <a href="diego.html">👨‍🍳 Diego</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <header>
+            <h1>BCN Recovery House</h1>
+        </header>
+        <section class="container">
+            <h2>Meet the Apartment's Residents</h2>
+            <img src="media/img/coinquilini.jpg" alt="Description of the image" width="500" height="300">
+            <ul>
+                <li><a href="gianluchino.html">Gianluchino, the problematic lover of fried foods</a></li>
+                <li><a href="flavietto.html">Flavietto, the laid-back Milanese employee</a></li>
+                <li><a href="gabriele.html">Gabriele, the roommate of SofrittoMan and Diego's ally</a></li>
+                <li><a href="prince_mouad.html">Prince Mouad, the newest arrival with a heart of gold</a></li>
+            </ul>
+
+            <!-- Fight Counter Section -->
+            <div class="litigio-section">
+                <h3>Fight Counter</h3>
+                <p id="litigioCounter">Total Fights: 0</p>
+                <select id="coinquilino1">
+                    <option value="Gianluchino">Gianluchino</option>
+                    <option value="Flavietto">Flavietto</option>
+                    <option value="Gabriele">Gabriele</option>
+                    <option value="Diego">Diego</option>
+                    <option value="Prince Mouad">Prince Mouad</option>
+                </select>
+                vs
+                <select id="coinquilino2">
+                    <option value="Gianluchino">Gianluchino</option>
+                    <option value="Flavietto">Flavietto</option>
+                    <option value="Gabriele">Gabriele</option>
+                    <option value="Diego">Diego</option>
+                    <option value="Prince Mouad">Prince Mouad</option>
+                </select>
+                <button onclick="incrementLitigio()">Add a fight</button>
+                <ul id="litigioList" class="litigio-list"></ul>
+            </div>
+
+            <!-- Fight Ranking Section -->
+            <div class="classifica">
+                <h3>Fight Ranking</h3>
+                <ul id="classificaList">
+                    <li>Gianluchino: 0 fights</li>
+                    <li>Flavietto: 0 fights</li>
+                    <li>Gabriele: 0 fights</li>
+                    <li>Diego: 0 fights</li>
+                    <li>Prince Mouad: 0 fights</li>
+                </ul>
+            </div>
+
+            <!-- Random Event Section -->
+            <div class="random-event">
+                <button onclick="generateEvent()">🤔 What's happening today?</button>
+                <p id="eventText"></p>
+            </div>
+
+            <!-- Cleaning Chart Section -->
+            <div class="cleaning-chart">
+                <h3>Cleaning Progress 🧹</h3>
+                <canvas id="cleaningChart" width="400" height="200"></canvas>
+            </div>
+
+            <!-- Playlist Section -->
+            <div class="playlist">
+                <h3>🎶 Roommates' Playlist 🎶</h3>
+                <ul>
+                    <li><strong>Diego:</strong> "Tutto Molto Interessante" - Fabio Rovazzi</li>
+                    <li><strong>Gianluchino:</strong> "Vita Spericolata" - Vasco Rossi</li>
+                    <li><strong>Gabriele:</strong> "Cuore" - Gigi D'Alessio</li>
+                    <li><strong>Flavietto:</strong> "E chiammalo" - Anthony</li>
+                    <li><strong>Prince Mouad:</strong> "Mentalité" - Baby Gang</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Language selection handling
+        window.onload = function () {
+            const selectedLanguage = localStorage.getItem("selectedLanguage");
+            if (selectedLanguage) {
+                document.getElementById("language").value = selectedLanguage;
+            }
+
+            // Initializing the cleaning chart
+            const ctx = document.getElementById('cleaningChart').getContext('2d');
+            const cleaningChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Diego', 'Gianluchino', 'Gabriele', 'Flavietto', 'Prince Mouad'],
+                    datasets: [{
+                        label: 'Cleaning Hours',
+                        data: [4.5, 2, 3, 3, 3],
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        };
+
+        // Function to change language
+        function changeLanguage() {
+            const languageSelect = document.getElementById("language");
+            const selectedValue = languageSelect.value;
+
+            localStorage.setItem("selectedLanguage", selectedValue);
+            window.location.href = selectedValue;
+        }
+
+        // Track and manage fights
+        let litigioCounter = 0;
+        let litigi = {
+            "Gianluchino": 0,
+            "Flavietto": 0,
+            "Gabriele": 0,
+            "Diego": 0,
+            "Prince Mouad": 0
+        };
+
+        function incrementLitigio() {
+            const coinquilino1 = document.getElementById('coinquilino1').value;
+            const coinquilino2 = document.getElementById('coinquilino2').value;
+
+            if (coinquilino1 !== coinquilino2) {
+                litigi[coinquilino1]++;
+                litigi[coinquilino2]++;
+                litigioCounter++;
+
+                const litigioList = document.getElementById('litigioList');
+                const newLitigio = document.createElement('li');
+                newLitigio.textContent = `${coinquilino1} vs ${coinquilino2}`;
+                litigioList.appendChild(newLitigio);
+
+                document.getElementById('litigioCounter').textContent = `Total Fights: ${litigioCounter}`;
+                updateClassifica();
+            } else {
+                alert("Roommates must be different!");
+            }
+        }
+
+        // Update the fight ranking
+        function updateClassifica() {
+            const classificaList = document.getElementById('classificaList');
+            classificaList.innerHTML = '';
+
+            const sortedLitigi = Object.entries(litigi).sort((a, b) => b[1] - a[1]);
+
+            sortedLitigi.forEach(([name, fights]) => {
+                const classificaItem = document.createElement('li');
+                classificaItem.textContent = `${name}: ${fights} fights`;
+                classificaList.appendChild(classificaItem);
+            });
+        }
+
+        // Toggle the sidebar on mobile
+        document.querySelector('.sidebar-toggle').addEventListener('click', function () {
+            document.querySelector('.sidebar').classList.toggle('active');
+        });
+    </script>
+</body>
+
+</html>

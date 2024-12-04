@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diego et ses Colocataires</title>
+    <style>
+        /* Styles de la barre latérale */
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #343a40;
+            padding-top: 20px;
+            overflow-x: hidden;
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+        }
+
+        .sidebar a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        /* Style principal */
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #343a40;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        h1,
+        h2 {
+            color: #007bff;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Style du sélecteur de langue */
+        .language-selector {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .language-selector select {
+            padding: 5px;
+            font-size: 1rem;
+            background-color: #f8f9fa;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <!-- Sélecteur de langue -->
+    <div class="language-selector">
+        <label for="language">Langue : </label>
+        <select id="language" onchange="window.location.href = this.value;">
+            <option value="index.html">Italien</option>
+            <option value="index-en.html">Anglais</option>
+            <option value="index-es.html">Espagnol</option>
+            <option value="index-fr.html">Français</option>
+            <option value="index-ar.html">Arabe</option>
+        </select>
+    </div>
+
+    <!-- Barre latérale -->
+    <div class="sidebar">
+        <a href="index.html">🏠 Accueil</a>
+        <a href="gianluchino.html">😡 Gianluchino</a>
+        <a href="flavietto.html">💼 Flavietto</a>
+        <a href="gabriele.html">🎸 Gabriele</a>
+        <a href="prince_mouad.html">✨ Prince Mouad</a>
+        <a href="diego.html">👨‍🍳 Diego</a>
+    </div>
+
+    <!-- Contenu principal -->
+    <div class="main-content">
+        <header>
+            <h1>Maison de Récupération BCN</h1>
+        </header>
+        <section class="container">
+            <h2>Rencontrez les habitants de l'appartement</h2>
+            <img src="media/img/coinquilini.jpg" alt="Description de l'image" width="500" height="300">
+            <ul>
+                <li><a href="gianluchino.html">Gianluchino, le passionné des fritures problématiques</a></li>
+                <li><a href="flavietto.html">Flavietto, l'employé milanais détendu</a></li>
+                <li><a href="gabriele.html">Gabriele, le colocataire de sofrittoMan et allié de Diego</a></li>
+                <li><a href="prince_mouad.html">Prince Mouad, le nouveau arrivé au cœur d'or</a></li>
+            </ul>
+
+            <!-- Section des disputes -->
+            <div class="litigio-section">
+                <h3>Compteur des Disputes</h3>
+                <p id="litigioCounter">Disputes totales : 0</p>
+                <select id="coinquilino1">
+                    <option value="Gianluchino">Gianluchino</option>
+                    <option value="Flavietto">Flavietto</option>
+                    <option value="Gabriele">Gabriele</option>
+                    <option value="Diego">Diego</option>
+                    <option value="Prince Mouad">Prince Mouad</option>
+                </select>
+                vs
+                <select id="coinquilino2">
+                    <option value="Gianluchino">Gianluchino</option>
+                    <option value="Flavietto">Flavietto</option>
+                    <option value="Gabriele">Gabriele</option>
+                    <option value="Diego">Diego</option>
+                    <option value="Prince Mouad">Prince Mouad</option>
+                </select>
+                <button onclick="incrementLitigio()">Ajouter une dispute</button>
+                <ul id="litigioList" class="litigio-list"></ul>
+            </div>
+
+            <!-- Section Classement des disputes -->
+            <div class="classifica">
+                <h3>Classement des disputes</h3>
+                <ul id="classificaList">
+                    <li>Gianluchino : 0 disputes</li>
+                    <li>Flavietto : 0 disputes</li>
+                    <li>Gabriele : 0 disputes</li>
+                    <li>Diego : 0 disputes</li>
+                    <li>Prince Mouad : 0 disputes</li>
+                </ul>
+            </div>
+
+            <!-- Section des événements aléatoires -->
+            <div class="random-event">
+                <button onclick="generateEvent()">🤔 Que se passe-t-il aujourd'hui ?</button>
+                <p id="eventText"></p>
+            </div>
+
+            <!-- Section Graphique des ménages -->
+            <div class="cleaning-chart">
+                <h3>Progrès du ménage 🧹</h3>
+                <canvas id="cleaningChart" width="400" height="200"></canvas>
+            </div>
+
+            <!-- Section Playlist -->
+            <div class="playlist">
+                <h3>🎶 Playlist des colocataires 🎶</h3>
+                <ul>
+                    <li><strong>Diego :</strong> "Tutto Molto Interessante" - Fabio Rovazzi</li>
+                    <li><strong>Gianluchino :</strong> "Vita Spericolata" - Vasco Rossi</li>
+                    <li><strong>Gabriele :</strong> "Cuore" - Gigi D'Alessio</li>
+                    <li><strong>Flavietto :</strong> "E chiammalo" - Anthony</li>
+                    <li><strong>Prince Mouad :</strong> "Mentalité" - Baby Gang</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+</body>
+
+</html>

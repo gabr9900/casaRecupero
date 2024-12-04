@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دييغو وزملاؤه في السكن</title>
+    <style>
+        /* أنماط الشريط الجانبي */
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #343a40;
+            padding-top: 20px;
+            overflow-x: hidden;
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+        }
+
+        .sidebar a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        /* النمط الرئيسي */
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #343a40;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        h1,
+        h2 {
+            color: #007bff;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* أنماط محدد اللغة */
+        .language-selector {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .language-selector select {
+            padding: 5px;
+            font-size: 1rem;
+            background-color: #f8f9fa;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+        }
+
+        /* الأنماط للأجهزة المحمولة */
+        @media screen and (max-width: 768px) {
+            .sidebar {
+                width: 0;
+                transition: 0.3s;
+            }
+
+            .sidebar a {
+                display: none;
+            }
+
+            .sidebar.active {
+                width: 250px;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            /* زر التبديل للشريط الجانبي */
+            .sidebar-toggle {
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                z-index: 1000;
+                font-size: 2rem;
+                color: #343a40;
+                cursor: pointer;
+            }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <!-- محدد اللغة -->
+    <div class="language-selector">
+        <label for="language">اللغة: </label>
+        <select id="language" onchange="changeLanguage();">
+            <option value="index.html">إيطالي</option>
+            <option value="index-en.html">الإنجليزية</option>
+            <option value="index-ar.html">العربية</option>
+        </select>
+    </div>
+
+    <!-- زر تبديل الشريط الجانبي -->
+    <div class="sidebar-toggle">☰</div>
+
+    <!-- الشريط الجانبي -->
+    <div class="sidebar">
+        <a href="index.html">🏠 الرئيسية</a>
+        <a href="gianluchino.html">😡 جيانلوشينو</a>
+        <a href="flavietto.html">💼 فلافيتو</a>
+        <a href="gabriele.html">🎸 جابرييل</a>
+        <a href="prince_mouad.html">✨ الأمير مؤاد</a>
+        <a href="diego.html">👨‍🍳 دييغو</a>
+    </div>
+
+    <!-- المحتوى الرئيسي -->
+    <div class="main-content">
+        <header>
+            <h1>منزل التعافي BCN</h1>
+        </header>
+        <section class="container">
+            <h2>تعرف على سكان الشقة</h2>
+            <img src="media/img/coinquilini.jpg" alt="وصف الصورة" width="500" height="300">
+            <ul>
+                <li><a href="gianluchino.html">جيانلوشينو، محب الأطعمة المقلية المزعج</a></li>
+                <li><a href="flavietto.html">فلافيتو، الموظف الهادئ في ميلانو</a></li>
+                <li><a href="gabriele.html">جابرييل، شريك الغرفة لسوفريتو مان وحليف دييغو</a></li>
+                <li><a href="prince_mouad.html">الأمير مؤاد، الوافد الجديد ذو القلب الطيب</a></li>
+            </ul>
+
+            <!-- قسم عداد المشاجرات -->
+            <div class="litigio-section">
+                <h3>عداد المشاجرات</h3>
+                <p id="litigioCounter">إجمالي المشاجرات: 0</p>
+                <select id="coinquilino1">
+                    <option value="Gianluchino">جيانلوشينو</option>
+                    <option value="Flavietto">فلافيتو</option>
+                    <option value="Gabriele">جابرييل</option>
+                    <option value="Diego">دييغو</option>
+                    <option value="Prince Mouad">الأمير مؤاد</option>
+                </select>
+                ضد
+                <select id="coinquilino2">
+                    <option value="Gianluchino">جيانلوشينو</option>
+                    <option value="Flavietto">فلافيتو</option>
+                    <option value="Gabriele">جابرييل</option>
+                    <option value="Diego">دييغو</option>
+                    <option value="Prince Mouad">الأمير مؤاد</option>
+                </select>
+                <button onclick="incrementLitigio()">إضافة مشاجرة</button>
+                <ul id="litigioList" class="litigio-list"></ul>
+            </div>
+
+            <!-- قسم ترتيب المشاجرات -->
+            <div class="classifica">
+                <h3>ترتيب المشاجرات</h3>
+                <ul id="classificaList">
+                    <li>جيانلوشينو: 0 مشاجرات</li>
+                    <li>فلافيتو: 0 مشاجرات</li>
+                    <li>جابرييل: 0 مشاجرات</li>
+                    <li>دييغو: 0 مشاجرات</li>
+                    <li>الأمير مؤاد: 0 مشاجرات</li>
+                </ul>
+            </div>
+
+            <!-- قسم الحدث العشوائي -->
+            <div class="random-event">
+                <button onclick="generateEvent()">🤔 ماذا يحدث اليوم؟</button>
+                <p id="eventText"></p>
+            </div>
+
+            <!-- قسم رسم بياني للتنظيف -->
+            <div class="cleaning-chart">
+                <h3>تقدم التنظيف 🧹</h3>
+                <canvas id="cleaningChart" width="400" height="200"></canvas>
+            </div>
+
+            <!-- قسم قائمة التشغيل -->
+            <div class="playlist">
+                <h3>🎶 قائمة التشغيل للزملاء 🎶</h3>
+                <ul>
+                    <li><strong>دييغو:</strong> "توتو مولتو إنتيريسانتي" - فابيو روفازي</li>
+                    <li><strong>جيانلوشينو:</strong> "فيتا سبيريكولاتا" - فاسكو روسي</li>
+                    <li><strong>جابرييل:</strong> "كور" - جيجي داليسيو</li>
+                    <li><strong>فلافيتو:</strong> "إيه كياما لو" - أنتوني</li>
+                    <li><strong>الأمير مؤاد:</strong> "مينتاليت" - بيبي غانغ</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // تابع لتحميل اللغة المختارة من localStorage
+        window.onload = function () {
+            const selectedLanguage = localStorage.getItem("selectedLanguage");
+            if (selectedLanguage) {
+                document.getElementById("language").value = selectedLanguage;
+            }
+
+            // تهيئة الرسم البياني
+            const ctx = document.getElementById('cleaningChart').getContext('2d');
+            const cleaningChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['دييغو', 'جيانلوشينو', 'جابرييل', 'فلافيتو', 'الأمير مؤاد'],
+                    datasets: [{
+                        label: 'ساعات التنظيف',
+                        data: [4.5, 2, 3, 3, 3],  // بيانات ساعات التنظيف لكل زميل
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        };
+
+        // تابع لتغيير اللغة وحفظ الاختيار
+        function changeLanguage() {
+            const languageSelect = document.getElementById("language");
+            const selectedValue = languageSelect.value;
+
+            localStorage.setItem("selectedLanguage", selectedValue);
+            window.location.href = selectedValue;
+        }
+
+        // متغير عام لتعقب عدد المشاجرات لكل زميل
+        let litigioCounter = 0;
+        let litigi = {
+            "جيانلوشينو": 0,
+            "فلافيتو": 0,
+            "جابرييل": 0,
+            "دييغو": 0,
+            "الأمير مؤاد": 0
+        };
+
+        // تابع لزيادة عداد المشاجرات
+        function incrementLitigio() {
+            const coinquilino1 = document.getElementById('coinquilino1').value;
+            const coinquilino2 = document.getElementById('coinquilino2').value;
+
+            if (coinquilino1 !== coinquilino2) {
+                litigi[coinquilino1]++;
+                litigi[coinquilino2]++;
+                litigioCounter++;
+
+                const litigioList = document.getElementById('litigioList');
+                const newLitigio = document.createElement('li');
+                newLitigio.textContent = `${coinquilino1} ضد ${coinquilino2}`;
+                litigioList.appendChild(newLitigio);
+
+                document.getElementById('litigioCounter').textContent = `إجمالي المشاجرات: ${litigioCounter}`;
+                updateClassifica();
+            } else {
+                alert("يجب أن يكون الزملاء مختلفين!");
+            }
+        }
+
+        // تابع لتحديث ترتيب المشاجرات
+        function updateClassifica() {
+            const classificaList = document.getElementById('classificaList');
+            classificaList.innerHTML = '';
+
+            const sortedLitigi = Object.entries(litigi).sort((a, b) => b[1] - a[1]);
+
+            sortedLitigi.forEach(([name, fights]) => {
+                const classificaItem = document.createElement('li');
+                classificaItem.textContent = `${name}: ${fights} مشاجرات`;
+                classificaList.appendChild(classificaItem);
+            });
+        }
+
+        // تابع لتبديل الشريط الجانبي في الأجهزة المحمولة
+        document.querySelector('.sidebar-toggle').addEventListener('click', function () {
+            document.querySelector('.sidebar').classList.toggle('active');
+        });
+    </script>
+</body>
+
+</html>
