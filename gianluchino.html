@@ -15,6 +15,12 @@
             line-height: 1.6;
         }
 
+        header h1 {
+            margin-top: 60px;
+            /* Sposta il titolo verso il basso */
+        }
+
+
         /* Stile Navbar */
         .sidebar {
             height: 100%;
@@ -25,6 +31,7 @@
             background-color: #343a40;
             padding-top: 20px;
             overflow-x: hidden;
+            transition: width 0.3s;
         }
 
         .sidebar a {
@@ -40,11 +47,22 @@
             color: white;
         }
 
-        /* Stile principale (per compensare la navbar laterale) */
         .main-content {
             margin-left: 250px;
-            /* Larghezza della navbar */
             padding: 20px;
+            transition: margin-left 0.3s;
+        }
+
+        /* Stile del pulsante toggle */
+        .sidebar-toggle {
+            display: none;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            font-size: 2rem;
+            color: black;
+            cursor: pointer;
         }
 
         h1,
@@ -65,10 +83,36 @@
             max-width: 100%;
             height: auto;
         }
+
+        /* Ottimizzazioni per dispositivi mobili */
+        @media screen and (max-width: 768px) {
+            .sidebar {
+                width: 0;
+            }
+
+            .sidebar.active {
+                width: 250px;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .sidebar.active~.main-content {
+                margin-left: 250px;
+            }
+
+            .sidebar-toggle {
+                display: block;
+            }
+        }
     </style>
 </head>
 
 <body>
+    <!-- Pulsante toggle per dispositivi mobili -->
+    <div class="sidebar-toggle">☰</div>
+
     <!-- Navbar laterale -->
     <div class="sidebar">
         <a href="index.html">🏠 Home</a>
@@ -89,9 +133,8 @@
             <h2>Chi è Gianluchino?</h2>
             <p>
                 Gianluchino è il coinquilino che tutti amano e temono. La sua passione per i soffritti è leggenda, ma la
-                sua personalità
-                esplosiva può creare situazioni imprevedibili. Con lui, ogni giorno è una nuova avventura culinaria e
-                non solo!
+                sua personalità esplosiva può creare situazioni imprevedibili. Con lui, ogni giorno è una nuova
+                avventura culinaria e non solo!
             </p>
 
             <h2>Caratteristiche principali</h2>
@@ -108,6 +151,17 @@
             </video>
         </section>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const toggleButton = document.querySelector(".sidebar-toggle");
+            const sidebar = document.querySelector(".sidebar");
+
+            toggleButton.addEventListener("click", function () {
+                sidebar.classList.toggle("active");
+            });
+        });
+    </script>
 </body>
 
 </html>

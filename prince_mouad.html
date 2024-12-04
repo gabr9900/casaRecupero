@@ -15,7 +15,7 @@
             line-height: 1.6;
         }
 
-        /* Stile Navbar */
+        /* Sidebar style */
         .sidebar {
             height: 100%;
             width: 250px;
@@ -25,6 +25,7 @@
             background-color: #155724;
             padding-top: 20px;
             overflow-x: hidden;
+            transition: width 0.3s ease;
         }
 
         .sidebar a {
@@ -40,11 +41,11 @@
             color: white;
         }
 
-        /* Stile principale */
+        /* Main content style */
         .main-content {
             margin-left: 250px;
-            /* Larghezza della navbar */
             padding: 20px;
+            transition: margin-left 0.3s ease;
         }
 
         header {
@@ -70,11 +71,49 @@
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
+        /* Sidebar Toggle Button for Mobile */
+        .sidebar-toggle {
+            display: none;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 2rem;
+            color: black;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        /* Mobile Styles */
+        @media screen and (max-width: 768px) {
+            .sidebar {
+                width: 0;
+            }
+
+            .sidebar.active {
+                width: 250px;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .sidebar.active~.main-content {
+                margin-left: 250px;
+            }
+
+            .sidebar-toggle {
+                display: block;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <!-- Navbar laterale -->
+    <!-- Sidebar Toggle Button -->
+    <div class="sidebar-toggle">☰</div>
+
+    <!-- Sidebar -->
     <div class="sidebar">
         <a href="index.html">🏠 Home</a>
         <a href="gianluchino.html">😡 Gianluchino</a>
@@ -84,7 +123,7 @@
         <a href="diego.html">👨‍🍳 Diego</a>
     </div>
 
-    <!-- Contenuto principale -->
+    <!-- Main content -->
     <div class="main-content">
         <header>
             <h1>Prince Mouad, il Cuore d'Oro</h1>
@@ -94,8 +133,7 @@
             <p>Prince Mouad è l'ultimo arrivato nell'appartamento, ma è già amatissimo da tutti. Nonostante la barriera
                 linguistica, riesce a trasmettere il suo grande cuore e la sua gentilezza.</p>
             <p>Sta imparando la cucina italiana dai suoi coinquilini e, al tempo stesso, insegna loro i segreti della
-                cucina
-                marocchina, creando un vero scambio culturale nell'appartamento.</p>
+                cucina marocchina, creando un vero scambio culturale nell'appartamento.</p>
             <h2>Caratteristiche principali</h2>
             <ul>
                 <li>🍳 Maestro della fusione tra tradizione marocchina e italiana.</li>
@@ -104,6 +142,18 @@
             </ul>
         </section>
     </div>
+
+    <script>
+        // Toggle sidebar on small screens
+        document.addEventListener("DOMContentLoaded", function () {
+            const toggleButton = document.querySelector(".sidebar-toggle");
+            const sidebar = document.querySelector(".sidebar");
+
+            toggleButton.addEventListener("click", function () {
+                sidebar.classList.toggle("active");
+            });
+        });
+    </script>
 </body>
 
 </html>

@@ -15,6 +15,10 @@
             line-height: 1.6;
         }
 
+        header h1 {
+            margin-top: 60px;
+        }
+
         /* Stile Navbar */
         .sidebar {
             height: 100%;
@@ -25,6 +29,7 @@
             background-color: #343a40;
             padding-top: 20px;
             overflow-x: hidden;
+            transition: width 0.3s ease;
         }
 
         .sidebar a {
@@ -43,8 +48,8 @@
         /* Stile principale (per compensare la navbar laterale) */
         .main-content {
             margin-left: 250px;
-            /* Larghezza della navbar */
             padding: 20px;
+            transition: margin-left 0.3s ease;
         }
 
         header {
@@ -70,11 +75,49 @@
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
+        /* Hamburger Menu for Small Screens */
+        .sidebar-toggle {
+            display: none;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 2rem;
+            color: black;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        /* Mobile Styles */
+        @media screen and (max-width: 768px) {
+            .sidebar {
+                width: 0;
+            }
+
+            .sidebar.active {
+                width: 250px;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .sidebar.active~.main-content {
+                margin-left: 250px;
+            }
+
+            .sidebar-toggle {
+                display: block;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <!-- Navbar laterale -->
+    <!-- Sidebar Toggle Button -->
+    <div class="sidebar-toggle">☰</div>
+
+    <!-- Sidebar -->
     <div class="sidebar">
         <a href="index.html">🏠 Home</a>
         <a href="gianluchino.html">😡 Gianluchino</a>
@@ -84,7 +127,7 @@
         <a href="diego.html">👨‍🍳 Diego</a>
     </div>
 
-    <!-- Contenuto principale -->
+    <!-- Main content -->
     <div class="main-content">
         <header>
             <h1>Gabriele, il Compagno di Stanza</h1>
@@ -93,11 +136,9 @@
             <h2>Chi è Gabriele?</h2>
             <p>Gabriele è il fedele compagno di Diego e un suo grande amico. Insieme condividono tutto, dalle
                 risate alle tensioni con Gianluchino con cui divide la camera. Gabriele è anche un appassionato di
-                musica
-                neomelodica e spesso si diverte a cantare con Flavietto.</p>
+                musica neomelodica e spesso si diverte a cantare con Flavietto.</p>
             <p>Nonostante le difficoltà della convivenza, i suoi spasmi e il suo essere leggermente handicappato (a
-                differenza
-                di Flavietto che è sano), è sempre pronto a supportare Diego, sia in cucina che nei
+                differenza di Flavietto che è sano), è sempre pronto a supportare Diego, sia in cucina che nei
                 conflitti quotidiani.</p>
             <p>A volte è messo alla prova dal suo folle alterego Clarovè che lo spinge al limite della follia e gli fa
                 compiere gesta folli. Sta cercando di comprendere come sconfiggerlo definitivamente.</p>
@@ -107,9 +148,20 @@
                 <li>🔥 Può accendersi facilmente... ma solo se sente una stonatura musicale.</li>
                 <li>🍝 Conosce le basi, ma preferisce lasciare il grembiule ai compagni.</li>
             </ul>
-
         </section>
     </div>
+
+    <script>
+        // Toggle sidebar on small screens
+        document.addEventListener("DOMContentLoaded", function () {
+            const toggleButton = document.querySelector(".sidebar-toggle");
+            const sidebar = document.querySelector(".sidebar");
+
+            toggleButton.addEventListener("click", function () {
+                sidebar.classList.toggle("active");
+            });
+        });
+    </script>
 </body>
 
 </html>

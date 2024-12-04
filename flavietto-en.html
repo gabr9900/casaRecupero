@@ -15,6 +15,10 @@
             line-height: 1.6;
         }
 
+        header h1 {
+            margin-top: 60px;
+        }
+
         /* Sidebar style */
         .sidebar {
             height: 100%;
@@ -25,6 +29,7 @@
             background-color: #343a40;
             padding-top: 20px;
             overflow-x: hidden;
+            transition: width 0.3s ease;
         }
 
         .sidebar a {
@@ -43,8 +48,8 @@
         /* Main content style */
         .main-content {
             margin-left: 250px;
-            /* Sidebar width */
             padding: 20px;
+            transition: margin-left 0.3s ease;
         }
 
         header {
@@ -70,10 +75,48 @@
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
+        /* Sidebar toggle button */
+        .sidebar-toggle {
+            display: none;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 2rem;
+            color: black;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        /* Media query for mobile responsiveness */
+        @media screen and (max-width: 768px) {
+            .sidebar {
+                width: 0;
+            }
+
+            .sidebar.active {
+                width: 250px;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .sidebar.active~.main-content {
+                margin-left: 250px;
+            }
+
+            .sidebar-toggle {
+                display: block;
+            }
+        }
     </style>
 </head>
 
 <body>
+    <!-- Sidebar Toggle Button -->
+    <div class="sidebar-toggle">☰</div>
+
     <!-- Sidebar -->
     <div class="sidebar">
         <a href="index-en.html">🏠 Home</a>
@@ -104,6 +147,18 @@
             </ul>
         </section>
     </div>
+
+    <script>
+        // Toggle sidebar on small screens
+        document.addEventListener("DOMContentLoaded", function () {
+            const toggleButton = document.querySelector(".sidebar-toggle");
+            const sidebar = document.querySelector(".sidebar");
+
+            toggleButton.addEventListener("click", function () {
+                sidebar.classList.toggle("active");
+            });
+        });
+    </script>
 </body>
 
 </html>

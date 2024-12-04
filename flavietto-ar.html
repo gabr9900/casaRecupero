@@ -15,16 +15,21 @@
             line-height: 1.6;
         }
 
+        header h1 {
+            margin-top: 60px;
+        }
+
         /* Sidebar style */
         .sidebar {
             height: 100%;
             width: 250px;
             position: fixed;
             top: 0;
-            left: 0;
+            right: 0;
             background-color: #343a40;
             padding-top: 20px;
             overflow-x: hidden;
+            transition: width 0.3s;
         }
 
         .sidebar a {
@@ -42,9 +47,9 @@
 
         /* Main content style */
         .main-content {
-            margin-left: 250px;
-            /* Sidebar width */
+            margin-right: 250px;
             padding: 20px;
+            transition: margin-right 0.3s;
         }
 
         header {
@@ -52,10 +57,6 @@
             color: white;
             padding: 10px 20px;
             text-align: center;
-        }
-
-        section {
-            padding: 20px;
         }
 
         h1,
@@ -70,10 +71,48 @@
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
+        /* Sidebar toggle button */
+        .sidebar-toggle {
+            display: none;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 2rem;
+            color: black;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        /* Responsiveness for smaller screens */
+        @media screen and (max-width: 768px) {
+            .sidebar {
+                width: 0;
+            }
+
+            .sidebar.active {
+                width: 250px;
+            }
+
+            .main-content {
+                margin-right: 0;
+            }
+
+            .sidebar.active~.main-content {
+                margin-right: 250px;
+            }
+
+            .sidebar-toggle {
+                display: block;
+            }
+        }
     </style>
 </head>
 
 <body>
+    <!-- Sidebar Toggle Button -->
+    <div class="sidebar-toggle">☰</div>
+
     <!-- Sidebar -->
     <div class="sidebar">
         <a href="index-ar.html">🏠 الصفحة الرئيسية</a>
@@ -81,7 +120,7 @@
         <a href="flavietto-ar.html">💼 فلافيوتو</a>
         <a href="gabriele-ar.html">🎸 جابرييل</a>
         <a href="prince_mouad-ar.html">✨ الأمير معاذ</a>
-        <a href="diego.html-ar">👨‍🍳 دييغو</a>
+        <a href="diego-ar.html">👨‍🍳 دييغو</a>
     </div>
 
     <!-- Main content -->
@@ -102,6 +141,18 @@
             </ul>
         </section>
     </div>
+
+    <script>
+        // Toggle sidebar on small screens
+        document.addEventListener("DOMContentLoaded", function () {
+            const toggleButton = document.querySelector(".sidebar-toggle");
+            const sidebar = document.querySelector(".sidebar");
+
+            toggleButton.addEventListener("click", function () {
+                sidebar.classList.toggle("active");
+            });
+        });
+    </script>
 </body>
 
 </html>
