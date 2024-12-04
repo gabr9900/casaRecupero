@@ -245,8 +245,8 @@
                 data: {
                     labels: ['Diego', 'Gianluchino', 'Gabriele', 'Flavietto', 'Prince Mouad'],
                     datasets: [{
-                        label: 'Ore di Pulizia',
-                        data: [4.5, 2, 3, 3, 3],  // Dati delle ore di pulizia per ciascun coinquilino
+                        label: 'Livello di Pulizia',
+                        data: [4.5, 2, 3, 3, 4],
                         backgroundColor: 'rgba(54, 162, 235, 0.2)',
                         borderColor: 'rgba(54, 162, 235, 1)',
                         borderWidth: 1
@@ -322,6 +322,87 @@
         document.querySelector('.sidebar-toggle').addEventListener('click', function () {
             document.querySelector('.sidebar').classList.toggle('active');
         });
+        function generateEvent() {
+            const events = [
+                "Gianluchino ha bruciato il soffritto. Casa invasa dal fumo. 😅",
+                "Flavietto ha organizzato un aperitivo improvvisato per 10 persone! 🥂",
+                "Gianluchino e Diego hanno fatto pace… ma solo per 5 minuti. 🎶",
+                "Prince Mouad ha cucinato una tajine deliziosa per tutti. 😍",
+                "Diego ha deciso di uccidere Gianluchino… ma ha cambiato idea. 😂",
+                "Flavietto è una persona stupenda! 😍",
+                "Qualcuno ha fregato il pomodoro di Gianluchino 😓",
+                "Gabriele ha preso l'ultimo pezzetto di pizza… senza chiedere. 😬",
+                "Diego ha dimenticato di mettere il latte in frigo. 😤",
+                "Gianluchino ha lasciato il fornello acceso per ore. ⚠️",
+                "Flavietto ha mangiato tutta la cioccolata in dispensa. 🍫",
+                "Prince Mouad ha proposto una cena marocchina per tutti. 🥘",
+                "Gabriele ha cantato karaoke fino a mezzanotte. 🎤",
+                "Diego ha confuso il detersivo con il succo d'arancia. 🍊",
+                "Gianluchino ha fatto esplodere il microonde. 💥",
+                "Flavietto ha suonato il pianoforte per due ore consecutive. 🎹",
+                "Prince Mouad ha preparato una pizza che ha cambiato la vita. 🍕",
+                "Gabriele ha deciso di fare una maratona di serie TV per tutto il weekend. 📺",
+                "Diego ha deciso di fare il bucato a mezzanotte. 🧺",
+                "Gianluchino ha raccontato una storia che ha fatto ridere tutta la casa. 😂",
+                "Flavietto ha deciso di fare yoga in salotto. 🧘‍♂️",
+                "Prince Mouad ha portato delle spezie uniche per la cucina. 🌶️",
+                "Gabriele ha deciso di fare una pulizia totale in casa… ma ha dimenticato la cucina. 🧹",
+                "Diego ha iniziato a fare meditazione… ma si è addormentato subito. 💤",
+                "Gianluchino ha comprato una pianta… ma l’ha dimenticata fuori al sole. 🌱",
+                "Flavietto ha organizzato una serata film con popcorn e coccole. 🍿",
+                "Prince Mouad ha insegnato a tutti a fare couscous perfetto. 🍴",
+                "Gabriele ha invaso la cucina con il suo 'piatto segreto'. 🍲",
+                "Diego ha deciso di fare il bucato a mezzanotte. 🧺",
+                "Gianluchino ha dimenticato di chiudere la porta di casa. 🚪",
+                "Flavietto ha mangiato 3 gelati in una volta sola. 🍦",
+                "Prince Mouad ha portato dei dolci marocchini che sono spariti in un secondo. 🍪",
+                "Gabriele ha detto che non vuole più vedere una lavatrice. 🧼",
+                "Diego ha messo una playlist musicale in loop per tutto il giorno. 🎧",
+                "Gianluchino ha bruciato le frittelle, ma ci ha messo una pezza. 🍽️",
+                "Flavietto ha provato una ricetta vegana… ed è stato un successo! 🌱",
+                "Prince Mouad ha preparato un tè marocchino per tutti. 🍵",
+                "Gabriele ha deciso di fare una maratona di film horror… da solo. 🎃",
+                "Diego ha fatto una torta… ma ha dimenticato lo zucchero. 🍰",
+                "Gianluchino ha deciso di fare un karaoke a sorpresa. 🎤",
+                "Flavietto ha organizzato una maratona di giochi da tavolo. 🎲",
+                "Prince Mouad ha trovato un posto segreto in cucina per i suoi dolci. 🍫",
+                "Gabriele ha mangiato la colazione di tutti… senza chiedere il permesso. 🥞",
+                "Diego ha fatto delle chiamate straniere a mezzanotte. 📞",
+                "Gianluchino ha costruito una torre di tazze, ma è crollata subito. ☕",
+                "Flavietto ha fatto uno scherzo a tutti… ma nessuno l’ha preso sul serio. 😂",
+                "Prince Mouad ha invitato tutti per un tè alle 10 del mattino. 🍵",
+                "Gabriele ha scoperto che il frigo non si chiude più bene. 🧊",
+                "Diego ha fatto una passeggiata di due ore… ma ha dimenticato di mettere le scarpe. 👟",
+                "Gianluchino ha detto che la pizza del venerdì è sacra. 🍕",
+                "Flavietto ha riso così tanto da far venire il mal di pancia. 😂",
+                "Prince Mouad ha cercato di insegnare la danza tradizionale marocchina. 💃",
+                "Gabriele ha messo un film di paura e ora tutti non riescono a dormire. 🎬",
+                "Diego ha deciso di diventare vegano per un giorno… ma ha ceduto alla carne. 🍖",
+                "Gianluchino ha visto un film e ha pianto per due ore. 😭",
+                "Flavietto ha cantato sotto la doccia… e ha rotto il soffione. 🚿",
+                "Prince Mouad ha deciso di fare una grigliata improvvisata sul balcone. 🍖",
+                "Gabriele ha mangiato la colazione di tutti… senza chiedere il permesso. 🥞",
+                "Diego ha fatto una sfida di cucina e ha bruciato tutto. 🔥",
+                "Gianluchino ha deciso di fare il DJ per tutta la sera. 🎶",
+                "Flavietto ha fatto una foto della casa… ma ha dimenticato di mettere la luce. 📸",
+                "Prince Mouad ha fatto un corso di cucina… e ha insegnato a tutti. 👨‍🍳",
+                "Gabriele ha mangiato così tanto che è dovuto andare a letto subito dopo. 🛏️",
+                "Diego ha preso un giorno di ferie… per fare il bucato. 🧺",
+                "Gianluchino ha lanciato una festa a sorpresa per Flavietto. 🎉",
+                "Flavietto ha deciso di fare la pizza in casa… ma è venuta tutta bruciata. 🍕",
+                "Prince Mouad ha raccontato storie incredibili che nessuno ha mai sentito prima. 🗣️",
+                "Gabriele ha scoperto un nuovo piatto di pasta… che ha fatto impazzire tutti. 🍝",
+                "Diego ha cominciato a fare giardinaggio, ma ha abbattuto una pianta. 🌱",
+                "Gianluchino ha voluto fare un picnic improvvisato in salotto. 🧺",
+                "Flavietto ha deciso di fare un corso di fotografia… ma ha dimenticato di mettere il flash. 📷",
+                "Prince Mouad ha fatto una torta per tutti, ma è sparita in un attimo. 🎂",
+                "Gabriele ha raccontato di aver visto un fantasma nel corridoio. 👻",
+                "Diego ha fatto delle chiamate straniere a mezzanotte. 📞"
+            ];
+
+            const randomEvent = events[Math.floor(Math.random() * events.length)];
+            document.getElementById('eventText').textContent = randomEvent;
+        }
     </script>
 </body>
 

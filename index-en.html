@@ -146,12 +146,12 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-        <a href="index.html">🏠 Home</a>
-        <a href="gianluchino.html">😡 Gianluchino</a>
-        <a href="flavietto.html">💼 Flavietto</a>
-        <a href="gabriele.html">🎸 Gabriele</a>
-        <a href="prince_mouad.html">✨ Prince Mouad</a>
-        <a href="diego.html">👨‍🍳 Diego</a>
+        <a href="index-en.html">🏠 Home</a>
+        <a href="gianluchino-en.html">😡 Gianluchino</a>
+        <a href="flavietto-en.html">💼 Flavietto</a>
+        <a href="gabriele-en.html">🎸 Gabriele</a>
+        <a href="prince_mouad-en.html">✨ Prince Mouad</a>
+        <a href="diego-en.html">👨‍🍳 Diego</a>
     </div>
 
     <!-- Main Content -->
@@ -163,10 +163,10 @@
             <h2>Meet the Apartment's Residents</h2>
             <img src="media/img/coinquilini.jpg" alt="Description of the image" width="500" height="300">
             <ul>
-                <li><a href="gianluchino.html">Gianluchino, the problematic lover of fried foods</a></li>
-                <li><a href="flavietto.html">Flavietto, the laid-back Milanese employee</a></li>
-                <li><a href="gabriele.html">Gabriele, the roommate of SofrittoMan and Diego's ally</a></li>
-                <li><a href="prince_mouad.html">Prince Mouad, the newest arrival with a heart of gold</a></li>
+                <li><a href="gianluchino-en.html">Gianluchino, the problematic lover of fried foods</a></li>
+                <li><a href="flavietto-en.html">Flavietto, the laid-back Milanese employee</a></li>
+                <li><a href="gabriele-en.html">Gabriele, the roommate of SofrittoMan and Diego's ally</a></li>
+                <li><a href="prince_mouad-en.html">Prince Mouad, the newest arrival with a heart of gold</a></li>
             </ul>
 
             <!-- Fight Counter Section -->
@@ -245,8 +245,8 @@
                 data: {
                     labels: ['Diego', 'Gianluchino', 'Gabriele', 'Flavietto', 'Prince Mouad'],
                     datasets: [{
-                        label: 'Cleaning Hours',
-                        data: [4.5, 2, 3, 3, 3],
+                        label: 'Cleaning Level',
+                        data: [4.5, 2, 3, 3, 4],
                         backgroundColor: 'rgba(54, 162, 235, 0.2)',
                         borderColor: 'rgba(54, 162, 235, 1)',
                         borderWidth: 1
@@ -321,6 +321,63 @@
         document.querySelector('.sidebar-toggle').addEventListener('click', function () {
             document.querySelector('.sidebar').classList.toggle('active');
         });
+        function generateEvent() {
+            const events = [
+                "Gianluchino burned the sauté. The house is filled with smoke. 😅",
+                "Flavietto organized an impromptu aperitif for 10 people! 🥂",
+                "Gianluchino and Diego made peace... but only for 5 minutes. 🎶",
+                "Prince Mouad cooked a delicious tagine for everyone. 😍",
+                "Diego decided to kill Gianluchino... but changed his mind. 😂",
+                "Flavietto is an amazing person! 😍",
+                "Someone stole Gianluchino's tomato. 😓",
+                "Gabriele took the last slice of pizza... without asking. 😬",
+                "Diego forgot to put the milk in the fridge. 😤",
+                "Gianluchino left the stove on for hours. ⚠️",
+                "Flavietto ate all the chocolate in the pantry. 🍫",
+                "Prince Mouad suggested a Moroccan dinner for everyone. 🥘",
+                "Gabriele sang karaoke until midnight. 🎤",
+                "Diego mixed detergent with orange juice. 🍊",
+                "Gianluchino exploded the microwave. 💥",
+                "Flavietto played the piano for two consecutive hours. 🎹",
+                "Prince Mouad made a pizza that changed our lives. 🍕",
+                "Gabriele decided to watch a TV series marathon all weekend. 📺",
+                "Diego decided to do the laundry at midnight. 🧺",
+                "Gianluchino told a story that made the whole house laugh. 😂",
+                "Flavietto decided to do yoga in the living room. 🧘‍♂️",
+                "Prince Mouad brought unique spices for the kitchen. 🌶️",
+                "Gabriele decided to clean the whole house... but forgot the kitchen. 🧹",
+                "Diego started meditating... but fell asleep immediately. 💤",
+                "Gianluchino bought a plant... but left it outside in the sun. 🌱",
+                "Flavietto organized a movie night with popcorn and cuddles. 🍿",
+                "Prince Mouad taught everyone how to make perfect couscous. 🍴",
+                "Gabriele invaded the kitchen with his 'secret dish'. 🍲",
+                "Diego decided to do the laundry at midnight. 🧺",
+                "Gianluchino forgot to close the door of the house. 🚪",
+                "Flavietto ate 3 ice creams at once. 🍦",
+                "Prince Mouad brought Moroccan sweets that disappeared in a second. 🍪",
+                "Gabriele said he never wants to see a washing machine again. 🧼",
+                "Diego put a music playlist on loop all day. 🎧",
+                "Gianluchino burned the pancakes, but fixed them. 🍽️",
+                "Flavietto tried a vegan recipe... and it was a success! 🌱",
+                "Prince Mouad made Moroccan tea for everyone. 🍵",
+                "Gabriele decided to watch a horror movie marathon... alone. 🎃",
+                "Diego made a cake... but forgot the sugar. 🍰",
+                "Gianluchino decided to do a surprise karaoke. 🎤",
+                "Flavietto organized a board game marathon. 🎲",
+                "Prince Mouad found a secret place in the kitchen for his sweets. 🍫",
+                "Gabriele ate everyone's breakfast... without asking. 🥞",
+                "Diego made international calls at midnight. 📞",
+                "Gianluchino built a tower of cups, but it collapsed immediately. ☕",
+                "Flavietto played a prank on everyone... but no one took it seriously. 😂",
+                "Prince Mouad invited everyone for tea at 10 a.m. 🍵",
+                "Gabriele discovered the fridge doesn't close properly anymore. 🧊",
+                "Diego went for a two-hour walk... but forgot to put on his shoes. 👟",
+                "Gianluchino said that Friday pizza is sacred. 🍕"
+            ];
+
+            const randomEvent = events[Math.floor(Math.random() * events.length)];
+            document.getElementById('eventText').textContent = randomEvent;
+        }
     </script>
 </body>
 
