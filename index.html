@@ -210,6 +210,20 @@
                 <p id="eventText"></p>
             </div>
 
+            <!-- Sezione Indovina Chi -->
+            <div class="indovina-chi">
+                <h3>Indovina Chi!</h3>
+                <p id="question">Chi ha rubato la polo di Gianluchino?</p>
+                <ul>
+                    <li><button onclick="checkAnswer('Prince Mouad')">Prince Mouad</button></li>
+                    <li><button onclick="checkAnswer('Gianluchino')">Gianluchino</button></li>
+                    <li><button onclick="checkAnswer('Flavietto')">Flavietto</button></li>
+                    <li><button onclick="checkAnswer('Gabriele')">Gabriele</button></li>
+                    <li><button onclick="checkAnswer('Diego')">Diego</button></li>
+                </ul>
+                <p id="result"></p>
+            </div>
+
             <!-- Sezione Grafico delle Pulizie -->
             <div class="cleaning-chart">
                 <h3>Andamento Pulizie 🧹</h3>
@@ -221,107 +235,67 @@
                 <h3>🎶 Playlist dei Coinquilini 🎶</h3>
                 <ul>
                     <li><strong>Diego:</strong> "Tutto Molto Interessante" - Fabio Rovazzi</li>
-                    <li><strong>Gianluchino:</strong> "Vita Spericolata" - Vasco Rossi</li>
-                    <li><strong>Gabriele:</strong> "Cuore" - Gigi D'Alessio</li>
-                    <li><strong>Flavietto:</strong> "E chiammalo" - Anthony</li>
-                    <li><strong>Prince Mouad:</strong> "Mentalité" - Baby Gang</li>
+                    <li><strong>Gianluchino:</strong> "Je te Promets" - Johnny Hallyday</li>
+                    <li><strong>Flavietto:</strong> "Giungla" - Eros Ramazzotti</li>
+                    <li><strong>Gabriele:</strong> "Bella Ciao" - Bandiera Rossa</li>
                 </ul>
             </div>
         </section>
     </div>
 
     <script>
-        // Funzione per caricare la lingua selezionata dal localStorage
-        window.onload = function () {
-            const selectedLanguage = localStorage.getItem("selectedLanguage");
-            if (selectedLanguage) {
-                document.getElementById("language").value = selectedLanguage;
-            }
-
-            // Inizializzazione del grafico
-            const ctx = document.getElementById('cleaningChart').getContext('2d');
-            const cleaningChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['Diego', 'Gianluchino', 'Gabriele', 'Flavietto', 'Prince Mouad'],
-                    datasets: [{
-                        label: 'Livello di Pulizia',
-                        data: [4.5, 2, 3, 3, 4],
-                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                        borderColor: 'rgba(54, 162, 235, 1)',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-        };
-
-        // Funzione per cambiare la lingua e salvare la selezione
+        // Funzione per cambiare la lingua
         function changeLanguage() {
-            const languageSelect = document.getElementById("language");
-            const selectedValue = languageSelect.value;
-
-            localStorage.setItem("selectedLanguage", selectedValue);
-            window.location.href = selectedValue;
+            const language = document.getElementById("language").value;
+            localStorage.setItem("selectedLanguage", language);
+            window.location.href = language;
         }
-
-        // Variabile globale per tracciare il numero di litigi per ogni coinquilino
-        let litigioCounter = 0;
-        let litigi = {
-            "Gianluchino": 0,
-            "Flavietto": 0,
-            "Gabriele": 0,
-            "Diego": 0,
-            "Prince Mouad": 0
-        };
 
         // Funzione per incrementare il contatore dei litigi
+        let litigioCounter = 0;
+        const litigioList = [];
         function incrementLitigio() {
-            const coinquilino1 = document.getElementById('coinquilino1').value;
-            const coinquilino2 = document.getElementById('coinquilino2').value;
-
+            const coinquilino1 = document.getElementById("coinquilino1").value;
+            const coinquilino2 = document.getElementById("coinquilino2").value;
             if (coinquilino1 !== coinquilino2) {
-                litigi[coinquilino1]++;
-                litigi[coinquilino2]++;
                 litigioCounter++;
-
-                const litigioList = document.getElementById('litigioList');
-                const newLitigio = document.createElement('li');
-                newLitigio.textContent = `${coinquilino1} vs ${coinquilino2}`;
-                litigioList.appendChild(newLitigio);
-
-                document.getElementById('litigioCounter').textContent = `Litigi totali: ${litigioCounter}`;
+                litigioList.push(`${coinquilino1} vs ${coinquilino2}`);
+                document.getElementById("litigioCounter").innerText = `Litigi totali: ${litigioCounter}`;
+                const li = document.createElement("li");
+                li.textContent = `${coinquilino1} vs ${coinquilino2}`;
+                document.getElementById("litigioList").appendChild(li);
                 updateClassifica();
             } else {
-                alert("I coinquilini devono essere diversi!");
+                alert("Non puoi aggiungere un litigio tra la stessa persona!");
             }
         }
 
-        // Funzione per aggiornare la classifica dei litigi
+        // Funzione per aggiornare la classifica
         function updateClassifica() {
-            const classificaList = document.getElementById('classificaList');
-            classificaList.innerHTML = '';
+            const classifica = {
+                'Gianluchino': 0,
+                'Flavietto': 0,
+                'Gabriele': 0,
+                'Diego': 0,
+                'Prince Mouad': 0
+            };
 
-            const sortedLitigi = Object.entries(litigi).sort((a, b) => b[1] - a[1]);
-
-            sortedLitigi.forEach(([nome, litigi]) => {
-                const classificaItem = document.createElement('li');
-                classificaItem.textContent = `${nome}: ${litigi} litigi`;
-                classificaList.appendChild(classificaItem);
+            litigioList.forEach(litigio => {
+                const players = litigio.split(" vs ");
+                classifica[players[0]]++;
+                classifica[players[1]]++;
             });
+
+            const classificaList = document.getElementById("classificaList");
+            classificaList.innerHTML = '';
+            for (const [player, count] of Object.entries(classifica)) {
+                const li = document.createElement("li");
+                li.textContent = `${player}: ${count} litigi`;
+                classificaList.appendChild(li);
+            }
         }
 
-        // Funzione per il toggle della sidebar su dispositivi mobili
-        document.querySelector('.sidebar-toggle').addEventListener('click', function () {
-            document.querySelector('.sidebar').classList.toggle('active');
-        });
+        // Funzione per generare un evento casuale
         function generateEvent() {
             const events = [
                 "Gianluchino ha bruciato il soffritto. Casa invasa dal fumo. 😅",
@@ -399,9 +373,36 @@
                 "Gabriele ha raccontato di aver visto un fantasma nel corridoio. 👻",
                 "Diego ha fatto delle chiamate straniere a mezzanotte. 📞"
             ];
+            const event = events[Math.floor(Math.random() * events.length)];
+            document.getElementById("eventText").innerText = event;
+        }
 
-            const randomEvent = events[Math.floor(Math.random() * events.length)];
-            document.getElementById('eventText').textContent = randomEvent;
+        // Funzione per il gioco Indovina Chi
+        function checkAnswer(answer) {
+            const correctAnswer = "Flavietto";
+            if (answer === correctAnswer) {
+                document.getElementById("result").innerText = "Corretto! è stato proprio lui!";
+            } else {
+                document.getElementById("result").innerText = "Sbagliato! Prova ancora.";
+            }
+        }
+
+        // Funzione per il grafico delle pulizie
+        window.onload = function () {
+            const ctx = document.getElementById('cleaningChart').getContext('2d');
+            const cleaningChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Gianluchino', 'Flavietto', 'Gabriele', 'Diego', 'Prince Mouad'],
+                    datasets: [{
+                        label: 'Pulizie settimanali',
+                        data: [8, 6, 7, 9, 5],
+                        backgroundColor: '#007bff',
+                        borderColor: '#007bff',
+                        borderWidth: 1
+                    }]
+                }
+            });
         }
     </script>
 </body>
