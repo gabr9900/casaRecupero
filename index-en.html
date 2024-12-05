@@ -6,37 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrer de Mallorca 354</title>
     <style>
-        /* Navbar Styles */
-        .sidebar {
-            height: 100%;
-            width: 250px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            background-color: #343a40;
-            padding-top: 20px;
-            overflow-x: hidden;
-        }
-
-        .sidebar a {
-            display: block;
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            font-size: 1.2rem;
-        }
-
-        .sidebar a:hover {
-            background-color: #007bff;
-            color: white;
-        }
-
-        /* Main Style */
-        .main-content {
-            margin-left: 250px;
-            padding: 20px;
-        }
-
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -51,6 +20,7 @@
             color: white;
             padding: 10px 20px;
             text-align: center;
+            margin-top: 60px;
         }
 
         section {
@@ -80,8 +50,9 @@
             text-decoration: underline;
         }
 
-        /* Language Selector Styles */
+        /* Stile per il selettore della lingua */
         .language-selector {
+            margin-bottom: 100px;
             position: absolute;
             top: 20px;
             right: 20px;
@@ -94,37 +65,6 @@
             background-color: #f8f9fa;
             border: 1px solid #007bff;
             border-radius: 5px;
-        }
-
-        /* Mobile Styles */
-        @media screen and (max-width: 768px) {
-            .sidebar {
-                width: 0;
-                transition: 0.3s;
-            }
-
-            .sidebar a {
-                display: none;
-            }
-
-            .sidebar.active {
-                width: 250px;
-            }
-
-            .main-content {
-                margin-left: 0;
-            }
-
-            /* Sidebar toggle button */
-            .sidebar-toggle {
-                position: absolute;
-                top: 20px;
-                left: 20px;
-                z-index: 1000;
-                font-size: 2rem;
-                color: black;
-                cursor: pointer;
-            }
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -141,19 +81,6 @@
         </select>
     </div>
 
-    <!-- Sidebar Toggle Button -->
-    <div class="sidebar-toggle">☰</div>
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <a href="index-en.html">🏠 Home</a>
-        <a href="gianluchino-en.html">😡 Gianluchino</a>
-        <a href="flavietto-en.html">💼 Flavietto</a>
-        <a href="gabriele-en.html">🎸 Gabriele</a>
-        <a href="prince_mouad-en.html">✨ Prince Mouad</a>
-        <a href="diego-en.html">👨‍🍳 Diego</a>
-    </div>
-
     <!-- Main Content -->
     <div class="main-content">
         <header>
@@ -161,12 +88,16 @@
         </header>
         <section class="container">
             <h2>Meet the Apartment's Residents</h2>
-            <img src="media/img/coinquilini.jpg" alt="Description of the image" width="500" height="300">
+            <img src="media/img/coinquilini.jpg" alt="Description of the image" width="340" height="300">
             <ul>
-                <li><a href="gianluchino-en.html">Gianluchino, the problematic lover of fried foods</a></li>
-                <li><a href="flavietto-en.html">Flavietto, the laid-back Milanese employee</a></li>
-                <li><a href="gabriele-en.html">Gabriele, the roommate of SofrittoMan and Diego's ally</a></li>
-                <li><a href="prince_mouad-en.html">Prince Mouad, the newest arrival with a heart of gold</a></li>
+                <li><a href="gianluchino-en.html">Gianluchino, il problematico amante dei soffritti</a></li>
+                <li><a href="flavietto-en.html">Flavietto, il rilassato impiegato milanese</a></li>
+                <li><a href="gabriele-en.html">Gabriele, il compagno di stanza del sofrittoMan, alleato di Diego,
+                        alterego
+                        di Clarovè</a></li>
+                <li><a href="prince_mouad-en.html">Prince Mouad, l'ultimo arrivato dal cuore d'oro</a></li>
+                <li><a href="diego-en.html">Diego, lo chef fuori di testa/<a></li>
+
             </ul>
 
             <!-- Fight Counter Section -->

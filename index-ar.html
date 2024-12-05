@@ -6,37 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrer de Mallorca 354</title>
     <style>
-        /* أنماط الشريط الجانبي */
-        .sidebar {
-            height: 100%;
-            width: 250px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            background-color: #343a40;
-            padding-top: 20px;
-            overflow-x: hidden;
-        }
-
-        .sidebar a {
-            display: block;
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            font-size: 1.2rem;
-        }
-
-        .sidebar a:hover {
-            background-color: #007bff;
-            color: white;
-        }
-
-        /* النمط الرئيسي */
-        .main-content {
-            margin-left: 250px;
-            padding: 20px;
-        }
-
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -51,6 +20,7 @@
             color: white;
             padding: 10px 20px;
             text-align: center;
+            margin-top: 60px;
         }
 
         section {
@@ -80,8 +50,9 @@
             text-decoration: underline;
         }
 
-        /* أنماط محدد اللغة */
+        /* Stile per il selettore della lingua */
         .language-selector {
+            margin-bottom: 100px;
             position: absolute;
             top: 20px;
             right: 20px;
@@ -94,37 +65,6 @@
             background-color: #f8f9fa;
             border: 1px solid #007bff;
             border-radius: 5px;
-        }
-
-        /* الأنماط للأجهزة المحمولة */
-        @media screen and (max-width: 768px) {
-            .sidebar {
-                width: 0;
-                transition: 0.3s;
-            }
-
-            .sidebar a {
-                display: none;
-            }
-
-            .sidebar.active {
-                width: 250px;
-            }
-
-            .main-content {
-                margin-left: 0;
-            }
-
-            /* زر التبديل للشريط الجانبي */
-            .sidebar-toggle {
-                position: absolute;
-                top: 20px;
-                left: 20px;
-                z-index: 1000;
-                font-size: 2rem;
-                color: black;
-                cursor: pointer;
-            }
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -141,19 +81,6 @@
         </select>
     </div>
 
-    <!-- زر تبديل الشريط الجانبي -->
-    <div class="sidebar-toggle">☰</div>
-
-    <!-- الشريط الجانبي -->
-    <div class="sidebar">
-        <a href="index.html">🏠 الرئيسية</a>
-        <a href="gianluchino-ar.html">😡 جيانلوشينو</a>
-        <a href="flavietto-ar.html">💼 فلافيتو</a>
-        <a href="gabriele-ar.html">🎸 جابرييل</a>
-        <a href="prince_mouad-ar.html">✨ الأمير مؤاد</a>
-        <a href="diego-ar.html">👨‍🍳 دييغو</a>
-    </div>
-
     <!-- المحتوى الرئيسي -->
     <div class="main-content">
         <header>
@@ -161,13 +88,7 @@
         </header>
         <section class="container">
             <h2>تعرف على سكان الشقة</h2>
-            <img src="media/img/coinquilini.jpg" alt="وصف الصورة" width="500" height="300">
-            <ul>
-                <li><a href="gianluchino-ar.html">جيانلوشينو، محب الأطعمة المقلية المزعج</a></li>
-                <li><a href="flavietto-ar.html">فلافيتو، الموظف الهادئ في ميلانو</a></li>
-                <li><a href="gabriele-ar.html">جابرييل، شريك الغرفة لسوفريتو مان وحليف دييغو</a></li>
-                <li><a href="prince_mouad-ar.html">الأمير مؤاد، الوافد الجديد ذو القلب الطيب</a></li>
-            </ul>
+            <img src="media/img/coinquilini.jpg" alt="وصف الصورة" width="340" height="300">
 
             <!-- قسم عداد المشاجرات -->
             <div class="litigio-section">
